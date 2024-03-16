@@ -4,6 +4,7 @@ const fs = require("node:fs");
 // File to store messages
 //const messageFile = "messages.txt";
 const messageFile = "update.lua";
+const MAX_ID = 20, MAX_TWITTER=50;
 
 let log_channel = null;
 
@@ -49,7 +50,7 @@ module.exports = {
       option
         .setName("twitter")
         .setDescription(
-          "msg with 140 length max to summary or show how useful can mod be"
+          `msg with ${MAX_TWITTER} length max to summary or show how useful can mod be`
         )
         .setRequired(true)
     ),
@@ -65,11 +66,11 @@ module.exports = {
     const followUpMessage = `processing ${modid}: ${twitter}`;
     await interaction.followUp({ content: followUpMessage, ephemeral: true });
 
-    if (twitter.length > 140) {
+    if (twitter.length > MAX_TWITTER) {
       await interaction.editReply("twitter too big");
       return;
     }
-    if (modid.length > 80) {
+    if (modid.length > MAX_ID) {
       await interaction.editReply("modid too big");
       return;
     }
