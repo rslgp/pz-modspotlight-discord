@@ -1,2 +1,0 @@
-table.insert(Billboard.ads, {modid:Firetrail,twitter:pour fuel and light it, burn corpses or use as fire weapon})
-table.insert(Billboard.ads, {modid:Firetrail,twitter:pour fuel and light it, burn corpses or use as fire weapon})
