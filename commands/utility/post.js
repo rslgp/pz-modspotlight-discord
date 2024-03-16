@@ -11,7 +11,8 @@ const alphabetRegex = /[^a-zA-Z ]/g;
 function treat(value) {
   value = value.trim();
   value = value.toLowerCase();
-  value = value.replace(alphabetRegex, "");
+  value = value.replace(alphabetRegex, ""); //only alphabetic
+  value = value.replace(/(.)\1{2,}/g, '$1$1'); //trim repeated values
   return value;
 }
 /*
