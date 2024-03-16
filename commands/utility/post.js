@@ -7,7 +7,7 @@ const messageFile = "update.lua";
 
 let log_channel = null;
 
-const alphabetRegex = /^[^a-zA-Z]+$/;
+const alphabetRegex = /^[^a-zA-Z ]+$/;
 function treat(value) {
   value = value.trim();
   value = value.toLowerCase();
