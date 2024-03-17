@@ -48,7 +48,7 @@ module.exports = {
     )
     .addStringOption((option) =>
       option
-        .setName("twitter")
+        .setName("short-desc")
         .setDescription(
           `msg with ${MAX_TWITTER} length max to summary or show how useful can mod be`
         )
@@ -56,18 +56,18 @@ module.exports = {
     ),
   async execute(interaction) {
     let modid = interaction.options.getString("modid");
-    let twitter = interaction.options.getString("twitter");
+    let short-desc = interaction.options.getString("short-desc");
     modid = treat(modid);
-    twitter = treat(twitter);
+    short-desc = treat(short-desc);
     // Defer the initial reply with an ephemeral message
     await interaction.deferReply({ ephemeral: true });
 
     // Send an ephemeral follow-up message with processing information
-    const followUpMessage = `processing ${modid}: ${twitter}`;
+    const followUpMessage = `processing ${modid}: ${short-desc}`;
     await interaction.followUp({ content: followUpMessage, ephemeral: true });
 
-    if (twitter.length > MAX_TWITTER) {
-      await interaction.editReply("twitter too big");
+    if (short-desc.length > MAX_TWITTER) {
+      await interaction.editReply("short-desc too big");
       return;
     }
     if (modid.length > MAX_ID) {
@@ -80,7 +80,7 @@ module.exports = {
         "1218305100494409909"
       );
     }
-    let new_item = `${modid}=${twitter}`;
+    let new_item = `${modid}=${short-desc}`;
     await log_channel.send(`<@!${interaction.user.id}>: ${new_item}`);
 
     //modifyAndAppendLine(`${new_item}`);
@@ -91,7 +91,7 @@ module.exports = {
         return interaction.editReply("Error saving message!");
       }
       console.log(`Message appended to ${messageFile}`);
-      interaction.editReply(modid + " twitter saved successfully!");
+      interaction.editReply(modid + " short-desc saved successfully!");
     });
   },
 };
