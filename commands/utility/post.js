@@ -8,7 +8,7 @@ const MAX_ID = 20, MAX_TWITTER=50;
 
 let log_channel = null;
 
-const alphabetRegex = /[^a-zA-Z ,.]/g;
+const alphabetRegex = /[^a-zA-Z0-9 ,.]/g;
 function treat(value) {
   value = value.trim();
   value = value.toLowerCase();
