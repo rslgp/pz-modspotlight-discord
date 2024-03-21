@@ -67,13 +67,21 @@ module.exports = {
 
     if(!/^\d+$/.test(modid)) await interaction.editReply("add workshop id, only numbers");
     let mod_data = await scrape.getModData(modid);
+
+    if (log_channel == null) {
+      log_channel = await interaction.guild.channels.fetch(
+        "1218305100494409909"
+      );
+    }
     if(mod_data.subscriber_count > 109999){
       await interaction.editReply(`this mod is too popular >100k subs, ${hint_recycleMSG}`);
+      await log_channel.send(`${interaction.user.id}: too popular ${new_item}`);
       return;
 
     }
     if(mod_data.subscriber_count<300){
-      await interaction.editReply(`this mod is yet too small <300 subs, ${hint_recycleMSG}`);
+      await interaction.editReply(`this mod is too small <300 subs, ${hint_recycleMSG}`);
+      await log_channel.send(`${interaction.user.id}: too small ${new_item}`);
       return;
     }
     modid = mod_data.modName;
@@ -93,11 +101,6 @@ module.exports = {
       return;
     }
 
-    if (log_channel == null) {
-      log_channel = await interaction.guild.channels.fetch(
-        "1218305100494409909"
-      );
-    }
     let new_item = `${modid}=${short_desc}`;
     await log_channel.send(`<@!${interaction.user.id}>: ${new_item}`);
 
