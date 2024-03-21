@@ -76,6 +76,9 @@ return;
         "1218305100494409909"
       );
     }
+
+let new_item = `${modid}=${short_desc}`;
+
     if(mod_data.subscriber_count > 109999){
       await interaction.editReply(`this mod is too popular >100k subs, ${hint_recycleMSG}`);
       await log_channel.send(`${interaction.user.id}: too popular ${new_item}`);
@@ -104,7 +107,6 @@ return;
       return;
     }
 
-    let new_item = `${modid}=${short_desc}`;
     await log_channel.send(`<@!${interaction.user.id}>: ${new_item}`);
 
     //modifyAndAppendLine(`${new_item}`);
