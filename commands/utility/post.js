@@ -6,7 +6,10 @@ const scrape = require("../../lib/webscrapping")
 //const messageFile = "messages.txt";
 const messageFile = "update.lua";
 const MAX_ID = 20,
-  MAX_TWITTER = 50;
+  MAX_TWITTER = 50,
+  MAX_SUBS = 109999,
+  MIN_SUBS = 200
+  ;
 
 const hint_recycleMSG = "press UP, to restore your last message";
 
@@ -79,14 +82,14 @@ return;
 
 let new_item = `${modid}=${short_desc}`;
 
-    if(mod_data.subscriber_count > 109999){
+    if(mod_data.subscriber_count > MAX_SUBS){
       await interaction.editReply(`this mod is too popular >100k subs, ${hint_recycleMSG}`);
       await log_channel.send(`${interaction.user.id}: too popular ${new_item}`);
       return;
 
     }
-    if(mod_data.subscriber_count<300){
-      await interaction.editReply(`this mod is too small <300 subs, ${hint_recycleMSG}`);
+    if(mod_data.subscriber_count<MIN_SUBS){
+      await interaction.editReply(`this mod is too small <${MIN_SUBS} subs, ${hint_recycleMSG}`);
       await log_channel.send(`${interaction.user.id}: too small ${new_item}`);
       return;
     }
