@@ -65,7 +65,10 @@ module.exports = {
     const followUpMessage = `processing ${modid}: ${short_desc}`;
     await interaction.followUp({ content: followUpMessage, ephemeral: true });
 
-    if(!/^\d+$/.test(modid)) await interaction.editReply("add workshop id, only numbers");
+    if(!/^\d+$/.test(modid)){
+ await interaction.editReply("add workshop id, only numbers");
+return;
+}
     let mod_data = await scrape.getModData(modid);
 
     if (log_channel == null) {
