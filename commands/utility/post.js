@@ -8,7 +8,7 @@ const messageFile = "update.lua";
 const MAX_ID = 20,
   MAX_TWITTER = 50,
   MAX_SUBS = 109999,
-  MIN_SUBS = 200
+  MIN_SUBS = 250
   ;
 
 const hint_recycleMSG = "press UP, to restore your last message";
