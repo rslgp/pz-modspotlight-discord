@@ -11,7 +11,7 @@ const MAX_ID = 20,
   MIN_SUBS = 250
   ;
 
-const hint_recycleMSG = "press UP, to restore your last message";
+const hint_recycleMSG = "\npress UP, to restore your last message";
 
 let log_channel = null;
 
@@ -103,12 +103,17 @@ let new_item = `${modid}=${short_desc}`;
 
     if (short_desc.length > MAX_TWITTER) {
       await interaction.editReply(`short_desc too big, ${hint_recycleMSG}`);
+      await log_channel.send(`${interaction.user.id}: too small ${new_item}`);
       return;
     }
+    /*
     if (modid.length > MAX_ID) {
       await interaction.editReply(`modid too big, ${hint_recycleMSG}`);
+      await log_channel.send(`${interaction.user.id}: too small ${new_item}`);
       return;
     }
+    */
+    
 
     await log_channel.send(`<@!${interaction.user.id}>: ${new_item}`);
 
