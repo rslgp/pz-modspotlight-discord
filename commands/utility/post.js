@@ -80,7 +80,8 @@ return;
       );
     }
 
-let new_item = `${modid}=${short_desc}`;
+    modid = mod_data.modName;
+    let new_item = `${modid}=${short_desc}`;
 
     if(mod_data.subscriber_count > MAX_SUBS){
       await interaction.editReply(`this mod is too popular >100k subs, ${hint_recycleMSG}`);
@@ -93,7 +94,6 @@ let new_item = `${modid}=${short_desc}`;
       await log_channel.send(`${interaction.user.id}: too small ${new_item}`);
       return;
     }
-    modid = mod_data.modName;
     //modid = treat(modid);
     short_desc = treat(short_desc);
     // Defer the initial reply with an ephemeral message
