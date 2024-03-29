@@ -27,6 +27,7 @@ function treat(value) {
 // Sample route to get a query parameter named "name"
 app.get('/zomboid-spotlight/mods', async (req, res) => {
   //console.log("get", req.headers);
+  //accept: 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
   if(req.headers['user-agent'].indexOf("Java") === -1) 
   {res.send('fail\n'); return}
   
