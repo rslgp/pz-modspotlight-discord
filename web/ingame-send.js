@@ -47,8 +47,14 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
   if(!short_desc) {res.send('invalid input\n'); return}
   
   let mod_data = await scrape.getModData(workshopid);
+  if(mod_data.subscriber_count > 200000)
+  {res.send(`too big in subs ${mod_data.subscriber_count}\n`); return}
+  if(mod_data.subscriber_count < 300)
+  {res.send(`too small in subs ${mod_data.subscriber_count}\n`); return}
+  
+  
   if(mod_data.modName){
-    let new_item = `${mod_data.modName}=${short_desc}`;
+    let new_item = `${mod_data.modName}=${short_desc} ${mod_data.subscriber_count}`;
     fs.appendFile(messageFile, `${new_item}\n`, (err) => {
         if (err) {
           console.log(err);
