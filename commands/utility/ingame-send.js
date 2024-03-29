@@ -46,17 +46,23 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
   if(!short_desc) {res.send('invalid input\n'); return}
   
   let mod_data = await scrape.getModData(workshopid);
-  let new_item = `${mod_data.modName}=${short_desc}`;
-  fs.appendFile(messageFile, `${new_item}\n`, (err) => {
-      if (err) {
-        console.log(err);
-        res.send('fail not saved\n');
-        return
-      }
-      console.log(`${new_item} by ${req.query.steamid}`);
-        res.send('success\n');
-        return
-    });
+  if(mod_data.modName){
+    let new_item = `${mod_data.modName}=${short_desc}`;
+    fs.appendFile(messageFile, `${new_item}\n`, (err) => {
+        if (err) {
+          console.log(err);
+          res.send('fail not saved\n');
+          return
+        }
+        console.log(`${new_item} by ${req.query.steamid}`);
+          res.send('success\n');
+          return
+      });    
+  }else{
+      res.send('invalid workshop id\n');
+      return
+    
+  }
 });
 
 const port = process.env.PORT || 8080;
