@@ -52,6 +52,7 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
         console.log(err);
       }
       console.log(`${new_item} by ${req.query.steamid}`);
+      res.send('success\n'); return}
     });
 });
 
