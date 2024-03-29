@@ -1,7 +1,8 @@
 const express = require('express');
 const https = require('https');
 const fs = require('node:fs');
-const scrape = require("../../lib/webscrapping")
+// const scrape = require("../../lib/webscrapping")
+const scrape = require("../git/pz-modspotlight-discord/lib/webscrapping")
 
 const app = express();
 
