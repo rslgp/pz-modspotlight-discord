@@ -55,7 +55,7 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
           res.send('fail not saved\n');
           return
         }
-        let log_text = `${new_item} by ${req.query.steamid}\n`
+        let log_text = `${new_item} by https://steamcommunity.com/profiles/${req.query.steamid}\n`
         console.log(log_text);
         res.send('success\n');
         fs.appendFile('log-persistent.txt', log_text, 'utf8', (err) => {
