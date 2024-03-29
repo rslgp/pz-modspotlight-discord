@@ -55,9 +55,13 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
           res.send('fail not saved\n');
           return
         }
-        console.log(`${new_item} by ${req.query.steamid}`);
-          res.send('success\n');
-          return
+        let log_text = `${new_item} by ${req.query.steamid}\n`
+        console.log(log_text);
+        res.send('success\n');
+        fs.appendFile('log-persistent.txt', log_text, 'utf8', (err) => {
+          if (err) throw err;
+        });
+        return
       });    
   }else{
       res.send('invalid workshop id\n');
