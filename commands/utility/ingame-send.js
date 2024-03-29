@@ -29,7 +29,7 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
   if(req.headers['user-agent'].indexOf("Java") === -1) res.send('fail\n')
   if(req.query.workshopid === null) res.send('fail no workshopID\n')
   if(req.query.steamid === null) res.send('fail no steamid\n')
-  if(req.query.desc === "") res.send('fail no description\n')
+  if(req.query.desc===null || req.query.desc === "") res.send('fail no description\n')
   if(req.query.desc && req.query.desc.length > MAX_TWITTER) res.send(`fail desc too long, max ${MAX_TWITTER}\n`)
   
   const workshopid = req.query.workshopid;
