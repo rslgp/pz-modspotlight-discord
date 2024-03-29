@@ -50,9 +50,12 @@ app.get('/zomboid-spotlight/mods', async (req, res) => {
   fs.appendFile(messageFile, `${new_item}\n`, (err) => {
       if (err) {
         console.log(err);
+        res.send('fail not saved\n');
+        return
       }
       console.log(`${new_item} by ${req.query.steamid}`);
-      res.send('success\n'); return}
+        res.send('success\n');
+        return
     });
 });
 
